@@ -7,11 +7,20 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <RevealOnScroll>
             <div className="flex justify-center">
-              <div className="relative">
-                <div className="w-64 h-64 md:w-72 md:h-72 rounded-full border-4 border-yellow bg-muted flex items-center justify-center">
-                  <span className="text-6xl text-muted-foreground/30">👤</span>
+              <div className="relative group">
+                {/* Main circle with image */}
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border border-yellow p-2 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-muted">
+                    <img 
+                      src="/Roysten.jpg.jpeg" 
+                      alt="Roysten KOSSOU" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
                 </div>
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-navy text-primary-foreground font-montserrat text-xs px-4 py-1.5 rounded-full">
+                
+                {/* Badge at the bottom-left of the circle */}
+                <div className="absolute bottom-6 -left-6 bg-navy text-primary-foreground font-outfit font-bold text-xs md:text-sm px-6 py-2.5 rounded-full shadow-xl animate-fade-up" style={{ animationDelay: '0.4s' }}>
                   Designer & Dev No-code
                 </div>
               </div>
@@ -34,8 +43,10 @@ export default function AboutSection() {
                   Pas un site ordinaire. Un outil qui te représente et qui convertit.
                 </p>
               </div>
-              <p className="font-outfit italic text-yellow text-lg mt-6">Roysten —</p>
-              <p className="font-montserrat text-sm text-navy mt-1">On apprend. On ajuste. On avance.</p>
+              <div className="mt-10 pt-6 border-t border-muted">
+                <p className="font-outfit font-black text-xl text-yellow mb-1">Roysten —</p>
+                <p className="font-montserrat text-navy font-bold text-sm tracking-wide">On apprend. On ajuste. On avance.</p>
+              </div>
             </div>
           </RevealOnScroll>
         </div>

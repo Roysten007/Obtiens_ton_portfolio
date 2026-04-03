@@ -32,16 +32,16 @@ export default function Navbar() {
       <div className="h-[3px] bg-yellow transition-all duration-100" style={{ width: `${progress}%` }} />
 
       <nav
-        className="flex items-center justify-between px-5 md:px-10 py-4 transition-all duration-400"
+        className="container mx-auto flex items-center justify-between px-5 py-4 transition-all duration-400"
         style={{
           backgroundColor: scrolled ? 'hsl(240,100%,29.4%)' : 'transparent',
           backdropFilter: scrolled ? 'none' : 'blur(8px)',
         }}
       >
         {/* Logo */}
-        <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="font-outfit font-black text-xl text-primary-foreground animate-fade-up" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
-          R<span className="text-yellow">·</span>o<span className="text-yellow">·</span>y
-          <span className="text-yellow mx-1">S</span>t<span className="text-yellow">·</span>e<span className="text-yellow">·</span>n
+        <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="font-outfit font-black text-xl text-primary-foreground animate-fade-up flex items-center gap-2" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+          <img src="/logo-o.png" alt="Logo" className="w-8 h-8 object-contain rounded-lg" />
+          <span>Obtiens<span className="text-yellow"> · </span>ton<span className="text-yellow"> · </span>Portfolio</span>
         </a>
 
         {/* Desktop links */}

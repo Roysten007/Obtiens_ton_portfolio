@@ -2,10 +2,12 @@ export default function Footer() {
   return (
     <footer className="bg-dark-navy py-14 px-5">
       <div className="container mx-auto max-w-3xl text-center">
-        <p className="font-outfit font-black text-xl text-primary-foreground mb-2">
-          R<span className="text-yellow">·</span>o<span className="text-yellow">·</span>y
-          <span className="text-yellow mx-1">S</span>t<span className="text-yellow">·</span>e<span className="text-yellow">·</span>n
-        </p>
+        <div className="flex flex-col items-center mb-4">
+          <img src="/logo-o.png" alt="Logo" className="w-12 h-12 object-contain rounded-xl mb-3 shadow-lg shadow-white/5" />
+          <p className="font-outfit font-black text-2xl text-primary-foreground tracking-tight">
+            Obtiens<span className="text-yellow"> · </span>ton<span className="text-yellow"> · </span>Portfolio
+          </p>
+        </div>
         <p className="font-montserrat italic text-primary-foreground/50 text-sm mb-6">
           On apprend. On ajuste. On avance.
         </p>
