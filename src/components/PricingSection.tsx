@@ -131,7 +131,7 @@ export default function PricingSection() {
           {plans.map((plan, i) => (
             <RevealOnScroll key={i} delay={[0, 0.15, 0.3][i]}>
               <div
-                className={`group relative h-full flex flex-col rounded-3xl border ${plan.style.border} ${plan.style.bg} ${plan.highlight ? 'ring-2 ring-yellow scale-[1.02] z-20' : 'z-10'} p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden`}
+                className={`group relative h-full flex flex-col rounded-3xl border ${plan.style.border} ${plan.style.bg} ${plan.highlight ? 'ring-2 ring-yellow scale-[1.02] z-20' : 'z-10'} p-8 ${plan.badge ? 'pt-12' : 'pt-8'} transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden`}
                 style={plan.gradient ? { background: 'linear-gradient(145deg, #05051a 0%, #0a0a2e 100%)' } : {}}
               >
                 {/* Visual Glow for Highlighted Card */}
@@ -140,7 +140,7 @@ export default function PricingSection() {
                 )}
 
                 {plan.badge && (
-                  <div className="absolute -top-[1px] left-1/2 -translate-x-1/2 bg-yellow text-navy font-outfit font-black text-[10px] tracking-widest uppercase px-6 py-2 rounded-b-xl shadow-md z-30">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-yellow text-navy font-outfit font-black text-[10px] tracking-widest uppercase px-4 py-1.5 rounded-b-xl shadow-md z-30 whitespace-nowrap">
                     {plan.badge}
                   </div>
                 )}
