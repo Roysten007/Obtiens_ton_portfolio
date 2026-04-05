@@ -38,15 +38,15 @@ export default function ProcessSection() {
 
           <div className="grid md:grid-cols-3 gap-12 md:gap-8">
             {steps.map((step, i) => (
-              <RevealOnScroll key={i} delay={i * 0.15}>
-                <div className="relative flex flex-col items-center text-center">
+              <RevealOnScroll key={i} delay={i * 0.15} className="h-full">
+                <div className="relative flex flex-col items-center text-center h-full">
                   {/* Number Circle */}
-                  <div className="w-20 h-20 rounded-full bg-yellow text-navy flex items-center justify-center font-outfit font-black text-2xl shadow-xl shadow-yellow/20 mb-8 border-4 border-white relative z-10 transition-transform duration-300 hover:scale-110">
+                  <div className="w-20 h-20 rounded-full bg-yellow text-navy flex items-center justify-center font-outfit font-black text-2xl shadow-xl shadow-yellow/20 mb-8 border-4 border-white relative z-10 transition-transform duration-300 hover:scale-110 shrink-0">
                     {step.number}
                   </div>
 
                   {/* Content Card */}
-                  <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-yellow/30 transition-all duration-300 group hover:shadow-xl hover:shadow-slate-200/50">
+                  <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-yellow/30 transition-all duration-300 group hover:shadow-xl hover:shadow-slate-200/50 flex-grow w-full">
                     <div className="inline-block bg-navy text-white text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full font-bold mb-4 shadow-sm">
                       {step.badge}
                     </div>
