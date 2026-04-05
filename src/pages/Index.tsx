@@ -9,8 +9,8 @@ import AboutSection from '@/components/AboutSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import PricingSection from '@/components/PricingSection';
 import ProcessSection from '@/components/ProcessSection';
-import InclusionsSection from '@/components/InclusionsSection';
-import CountdownSection from '@/components/CountdownSection';
+import ValueStackSection from '@/components/ValueStackSection';
+import UrgencySection from '@/components/UrgencySection';
 import FormSection from '@/components/FormSection';
 import FAQSection from '@/components/FAQSection';
 import CTAFinalSection from '@/components/CTAFinalSection';
@@ -30,9 +30,9 @@ const Index = () => {
         <AboutSection />
         <TestimonialsSection />
         <ProcessSection />
-        <InclusionsSection />
+        <ValueStackSection />
         <PricingSection />
-        <CountdownSection />
+        <UrgencySection />
         <FormSection />
         <FAQSection />
         <CTAFinalSection />
