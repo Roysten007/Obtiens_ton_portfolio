@@ -4,7 +4,7 @@ import { useCountUp, useScrollReveal } from '@/hooks/useAnimations';
 
 export default function HeroSection() {
   const { ref, isVisible } = useScrollReveal(0.1);
-  const stat1 = useCountUp(48, 1500, true);
+  const stat1 = useCountUp(5, 1500, true);
   const stat2 = useCountUp(3, 1500, true);
   const stat3 = useCountUp(100, 1500, true);
 
@@ -19,7 +19,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center bg-navy overflow-hidden noise-overlay">
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden noise-overlay" style={{ backgroundColor: 'hsl(240, 100%, 29.4%)' }}>
       {/* Grid lines */}
       <div className="absolute inset-0 z-0 opacity-[0.06]" style={{
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)',
@@ -38,7 +38,10 @@ export default function HeroSection() {
         parallaxStrength={0.05}
       />
 
-      <div className="relative z-10 container mx-auto px-5 pt-32 pb-20 md:pt-44 md:pb-32">
+      {/* Explicit dark navy base so CSS variable bg doesn't bleed through */}
+      <div className="absolute inset-0 z-0" style={{ backgroundColor: 'hsl(240,71%,6%)' }} />
+
+      <div className="relative z-20 container mx-auto px-5 pt-32 pb-20 md:pt-44 md:pb-32">
         <div className="max-w-3xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-block bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-1.5 mb-6 animate-fade-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
@@ -80,7 +83,7 @@ export default function HeroSection() {
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-10 md:gap-16 animate-fade-up" style={{ animationDelay: '1s', animationFillMode: 'both' }}>
             {[
-              { val: stat1, label: 'heures livraison VIP' },
+              { val: stat1, label: 'jours livraison VIP' },
               { val: stat2, label: 'formules disponibles' },
               { val: stat3, suffix: '%', label: 'responsive garanti' },
             ].map((s, i) => (
