@@ -19,27 +19,23 @@ export default function HeroSection() {
   };
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden noise-overlay" style={{ backgroundColor: 'hsl(240, 100%, 29.4%)' }}>
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden noise-overlay" style={{ backgroundColor: '#000096' }}>
       {/* Grid lines */}
-      <div className="absolute inset-0 z-0 opacity-[0.06]" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)',
-        backgroundSize: '60px 60px',
+      <div className="absolute inset-0 z-0 opacity-[0.1]" style={{
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
+        backgroundSize: '80px 80px',
       }} />
-      {/* Radial glow */}
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full z-0" style={{
-        background: 'radial-gradient(circle, hsla(46,96%,50%,0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, hsla(46,96%,50%,0.1) 0%, transparent 70%)',
       }} />
       
       <FloatingLines 
-        linesGradient={['#0a0a2e', '#1a3a9a', '#4c8bf5', '#00d4ff']}
-        lineCount={[5, 10, 5]}
-        animationSpeed={0.3}
+        linesGradient={['#ffffff', '#4c8bf5', '#00d4ff', '#ffffff']}
+        lineCount={[8, 12, 8]}
+        animationSpeed={0.4}
         parallax={true}
-        parallaxStrength={0.05}
+        parallaxStrength={0.08}
       />
-
-      {/* Explicit dark navy base so CSS variable bg doesn't bleed through */}
-      <div className="absolute inset-0 z-0" style={{ backgroundColor: 'hsl(240,71%,6%)' }} />
 
       <div className="relative z-20 container mx-auto px-5 pt-32 pb-20 md:pt-44 md:pb-32">
         <div className="max-w-3xl mx-auto text-center">
@@ -76,15 +72,15 @@ export default function HeroSection() {
               onClick={() => scrollTo('#pricing')}
               className="border-2 border-primary-foreground/40 text-primary-foreground font-outfit font-bold px-8 py-3.5 rounded-full hover:border-yellow hover:text-yellow hover:-translate-y-[3px] transition-all duration-300 cursor-none"
             >
-              Voir les formules
+              Découvrir le tarif
             </button>
           </div>
 
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-10 md:gap-16 animate-fade-up" style={{ animationDelay: '1s', animationFillMode: 'both' }}>
             {[
-              { val: stat1, label: 'jours livraison VIP' },
-              { val: stat2, label: 'formules disponibles' },
+              { val: stat1, label: 'jours de livraison' },
+              { val: 1, label: 'Accompagnement 1:1' },
               { val: stat3, suffix: '%', label: 'responsive garanti' },
             ].map((s, i) => (
               <div key={i} className="text-center min-w-[120px]">

@@ -196,7 +196,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     }
   }
 
-  fragColor = vec4(col, 1.0);
+  float alpha = clamp(max(col.r, max(col.g, col.b)) * 2.0, 0.0, 1.0);
+  fragColor = vec4(col, alpha);
 }
 
 void main() {

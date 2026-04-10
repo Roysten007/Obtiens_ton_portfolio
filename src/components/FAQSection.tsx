@@ -3,10 +3,10 @@ import RevealOnScroll from './RevealOnScroll';
 
 const faqs = [
   { q: "C'est quoi ce programme ?", a: "Obtiens ton Portfolio est un programme qui te crée un site web professionnel, responsive et optimisé SEO. C'est ta vitrine en ligne, conçue pour inspirer confiance et convertir des visiteurs en clients." },
-  { q: 'Délai de livraison selon la formule ?', a: 'Essentiel : 5 jours. Premium : 3 jours. VIP : 48h. Les délais commencent après validation du brief et réception du premier paiement.' },
-  { q: "Pas de réalisations, c'est un problème ?", a: "Pas du tout. On peut créer ton portfolio avec les projets que tu as, même personnels. L'important c'est de montrer ton style et ta compétence." },
-  { q: 'Comment se passe le paiement ?', a: '50% à la commande, 50% à la livraison. Paiement par MTN ou Moov Mobile Money. Simple et sécurisé.' },
-  { q: 'Et après la livraison ?', a: "Selon ta formule, tu bénéficies d'un suivi (15 jours Premium, 1 mois VIP). Tu peux aussi demander des révisions selon ton plan." },
+  { q: 'Quel est le délai de livraison ?', a: 'Le délai est de 5 jours maximum après validation de ton brief et réception du premier paiement.' },
+  { q: "Pas de réalisations, c'est un problème ?", a: "Pas du tout. On peut créer ton portfolio avec tes compétences et tes projets personnels. L'important c'est de montrer ton style et ce que tu es capable d'apporter." },
+  { q: 'Comment se passe le paiement ?', a: 'Le règlement se fait en deux étapes : 50% à la commande pour lancer la production, et 50% à la livraison finale.' },
+  { q: 'Et après la livraison ?', a: "Tu ne restes pas seul. Tu bénéficies d'un suivi pour t'assurer que tu es 100% satisfait de ton nouvel outil de travail en ligne." },
 ];
 
 export default function FAQSection() {
@@ -14,7 +14,7 @@ export default function FAQSection() {
 
   return (
     <section className="section-padding bg-navy">
-      <div className="container mx-auto max-w-2xl">
+      <div className="container mx-auto max-w-2xl px-4">
         <h2 className="font-outfit font-black text-3xl md:text-4xl text-primary-foreground text-center mb-12">
           Questions fréquentes.
         </h2>
@@ -22,7 +22,7 @@ export default function FAQSection() {
         <div className="space-y-3">
           {faqs.map((faq, i) => (
             <RevealOnScroll key={i} delay={i * 0.08}>
-              <div className="border border-primary-foreground/10 rounded-xl overflow-hidden">
+              <div className="border border-primary-foreground/10 rounded-xl overflow-hidden bg-white/5">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left cursor-none"

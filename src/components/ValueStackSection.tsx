@@ -68,7 +68,7 @@ export default function ValueStackSection() {
               onClick={() => document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' })}
               className="group font-outfit font-black text-navy hover:text-yellow text-lg inline-flex items-center gap-2 transition-all"
             >
-              Voir les formules complètes 
+              Réserver ma place 
               <span className="group-hover:translate-x-2 transition-transform">→</span>
             </button>
           </div>

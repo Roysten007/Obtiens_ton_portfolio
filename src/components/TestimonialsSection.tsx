@@ -2,9 +2,16 @@ import { useState, useEffect, useCallback } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 const testimonials = [
-  { name: 'Awa S.', role: 'Graphiste, Cotonou', quote: 'Grâce à Roysten, j\'ai enfin un portfolio qui reflète mon niveau. Mes clients sont impressionnés dès le premier clic.' },
-  { name: 'Mohamed K.', role: 'Photographe, Parakou', quote: 'En 3 jours, j\'avais un site pro. Les gens me prennent beaucoup plus au sérieux maintenant.' },
-  { name: 'Christelle A.', role: 'Community Manager, Bohicon', quote: 'Je recommande à 100%. Le site est magnifique, rapide, et Roysten est très à l\'écoute.' },
+  { 
+    name: 'DAKO Clovisse', 
+    role: 'Étudiant en 2ème année BTP', 
+    quote: 'Roy a su transformer mon parcours académique en une vitrine professionnelle percutante. Mon portfolio BTP attire désormais l\'attention des recruteurs dès le premier coup d\'œil.' 
+  },
+  { 
+    name: 'KIKI Tchédrack', 
+    role: 'Copywriter Expert Immobilier', 
+    quote: 'En tant que copywriter, l\'image de marque est essentielle. Grâce à Roy, j\'ai enfin un portfolio qui reflète l\'élégance et la précision de mon travail dans l\'immobilier.' 
+  },
 ];
 
 export default function TestimonialsSection() {

@@ -1,6 +1,5 @@
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent } from 'react';
 import RevealOnScroll from './RevealOnScroll';
-import { Check } from 'lucide-react';
 
 const metiers = [
   'Graphiste / Designer',
@@ -18,33 +17,26 @@ export default function FormSection() {
   const [loading, setLoading] = useState(false);
   const [shake, setShake] = useState(false);
   const [formData, setFormData] = useState({
-    prenom: '', nom: '', metier: '', lien: '', message: '', formule: '', paiement: '',
+    prenom: '', nom: '', metier: '',
   });
-
-  useEffect(() => {
-    const handleSelectPlan = (e: any) => {
-      const plan = e.detail;
-      setFormData(prev => ({ ...prev, formule: plan }));
-    };
-    window.addEventListener('select-plan', handleSelectPlan);
-    return () => window.removeEventListener('select-plan', handleSelectPlan);
-  }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const { prenom, nom, metier, formule, paiement } = formData;
-    if (!prenom || !nom || !metier || !formule || !paiement) {
+    const { prenom, nom, metier } = formData;
+    if (!prenom || !nom || !metier) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
       return;
     }
     setLoading(true);
-    // WhatsApp pre-filled message
-    const text = `Bonjour ! Je souhaite commander la formule ${formule}. Mon nom est ${prenom} ${nom}, je suis ${metier}. Ma motivation : ${formData.message || 'Non précisée'}. Paiement via ${paiement}.`;
+    
+    // WhatsApp message
+    const text = `Bonjour ! Je souhaite obtenir mon portfolio (Offre Unique 59 000 FCFA). \n\nPrénom : ${prenom} \nNom : ${nom} \nProfession : ${metier}`;
     const encodedText = encodeURIComponent(text);
+    
     setTimeout(() => {
       setLoading(false);
-      window.open(`https://wa.me/2290143405361?text=${encodedText}`, '_blank');
+      window.open(`https://wa.me/22946305190?text=${encodedText}`, '_blank');
     }, 1500);
   };
 
@@ -52,20 +44,20 @@ export default function FormSection() {
 
   return (
     <section id="form" className="section-padding bg-slate-50">
-      <div className="container mx-auto max-w-2xl text-center">
+      <div className="container mx-auto max-w-2xl text-center px-4">
         <h2 className="font-outfit font-black text-3xl md:text-5xl text-navy mb-6 tracking-tight">
-          Obtiens toi aussi ton portfolio.
+          Réserve ta place maintenant.
         </h2>
         <RevealOnScroll>
           <p className="font-montserrat text-slate-500 mb-12 text-lg">
-            Ta future vitrine en ligne commence ici. Remplis ce court formulaire et je te recontacte sous 24h pour lancer ton projet.
+            Ta future vitrine en ligne commence ici. Remplis ces 3 informations et je te recontacte sur WhatsApp sous 24h.
           </p>
         </RevealOnScroll>
 
         <RevealOnScroll delay={0.15}>
           <form
             onSubmit={handleSubmit}
-            className={`bg-white border border-slate-200 rounded-[2rem] shadow-2xl shadow-navy/5 p-8 md:p-12 text-left space-y-8 ${shake ? 'animate-shake' : ''}`}
+            className={`bg-white border border-slate-200 rounded-[3rem] shadow-2xl shadow-navy/5 p-8 md:p-14 text-left space-y-8 ${shake ? 'animate-shake' : ''}`}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="float-label-group">
@@ -79,7 +71,7 @@ export default function FormSection() {
             </div>
 
             <div className="space-y-2">
-              <label className="block font-outfit font-bold text-navy text-sm ml-1 mb-1">Ton métier</label>
+              <label className="block font-outfit font-bold text-navy text-sm ml-1 mb-1">Ton métier (Profession)</label>
               <div className="relative">
                 <select 
                   className="w-full h-14 px-5 rounded-2xl border-2 border-slate-100 bg-slate-50/50 font-montserrat text-navy focus:border-yellow outline-none transition-all appearance-none"
@@ -98,50 +90,14 @@ export default function FormSection() {
               </div>
             </div>
 
-            <div className="float-label-group">
-              <input type="url" placeholder=" " value={formData.lien} onChange={e => set('lien', e.target.value)} />
-              <label>Lien vers tes travaux (Instagram, Drive...)</label>
-            </div>
-
-            <div className="float-label-group">
-              <textarea rows={3} placeholder=" " value={formData.message} onChange={e => set('message', e.target.value)} />
-              <label>Pourquoi as-tu besoin d'un portfolio ?</label>
-            </div>
-
-            <div className="pt-2">
-              <p className="font-outfit font-black text-navy mb-4 text-sm flex items-center gap-2">
-                <span className="w-6 h-6 bg-navy text-white text-[10px] flex items-center justify-center rounded-full">1</span>
-                Formule choisie
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                {['ESSENTIEL', 'PREMIUM', 'VIP'].map(f => (
-                  <label
-                    key={f}
-                    className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all duration-300 relative overflow-hidden group ${formData.formule === f ? 'border-yellow bg-yellow/5' : 'border-slate-100 hover:border-yellow/30'}`}
-                  >
-                    <input type="radio" name="formule" value={f} className="sr-only" onChange={() => set('formule', f)} checked={formData.formule === f} />
-                    <span className={`font-outfit font-black text-sm transition-colors ${formData.formule === f ? 'text-navy' : 'text-slate-400 group-hover:text-navy'}`}>{f}</span>
-                    {formData.formule === f && <div className="absolute top-0 right-0 w-8 h-8 bg-yellow text-navy flex items-center justify-center rounded-bl-xl"><Check size={12} strokeWidth={4} /></div>}
-                  </label>
-                ))}
+            {/* Fixed Offer Display */}
+            <div className="bg-navy rounded-3xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="text-center md:text-left">
+                <p className="font-outfit font-black text-lg text-yellow">Offre Unique</p>
+                <p className="font-montserrat text-xs text-white/60">Livraison en 5 jours</p>
               </div>
-            </div>
-
-            <div>
-              <p className="font-outfit font-black text-navy mb-4 text-sm flex items-center gap-2">
-                <span className="w-6 h-6 bg-navy text-white text-[10px] flex items-center justify-center rounded-full">2</span>
-                Moyen de paiement
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {['MTN Mobile Money', 'Moov Mobile Money'].map(p => (
-                  <label
-                    key={p}
-                    className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all duration-300 ${formData.paiement === p ? 'border-navy bg-navy text-white shadow-xl shadow-navy/20' : 'border-slate-100 hover:border-navy/30'}`}
-                  >
-                    <input type="radio" name="paiement" value={p} className="sr-only" onChange={() => set('paiement', p)} />
-                    <span className="font-montserrat font-bold text-sm tracking-tight">{p}</span>
-                  </label>
-                ))}
+              <div className="text-3xl font-outfit font-black">
+                59 000 <span className="text-sm font-normal text-white/50">FCFA</span>
               </div>
             </div>
 
@@ -153,15 +109,18 @@ export default function FormSection() {
               {loading ? (
                 <div className="flex items-center gap-3">
                   <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
-                  <span>Préparation de ton projet...</span>
+                  <span>Mise en relation...</span>
                 </div>
               ) : (
                 <>
-                  <span>Obtenir mon portfolio</span>
+                  <span>Réserver ma place</span>
                   <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
                 </>
               )}
             </button>
+            <p className="text-center font-montserrat text-[10px] text-slate-400">
+               * Tu seras redirigé vers WhatsApp pour finaliser ta demande.
+            </p>
           </form>
         </RevealOnScroll>
       </div>

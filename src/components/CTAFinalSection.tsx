@@ -9,7 +9,7 @@ export default function CTAFinalSection() {
             Ne laisse plus ton talent dans l'ombre.
           </h2>
           <p className="font-montserrat text-primary-foreground/70 mb-10 leading-relaxed">
-            Rejoins le programme. Obtiens le portfolio que tu mérites. Avant le 30 avril.
+            Rejoins le programme et obtiens enfin la vitrine en ligne que ton talent mérite.
           </p>
           <button
             onClick={() => document.querySelector('#form')?.scrollIntoView({ behavior: 'smooth' })}
@@ -17,9 +17,6 @@ export default function CTAFinalSection() {
           >
             Je veux mon portfolio maintenant →
           </button>
-          <p className="font-montserrat text-sm text-primary-foreground/40 mt-6">
-            Offre -25% valable jusqu'au 30 avril 2026.
-          </p>
         </RevealOnScroll>
       </div>
     </section>

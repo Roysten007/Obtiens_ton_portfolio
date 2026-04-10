@@ -1,4 +1,6 @@
 export default function Footer() {
+  const whatsappUrl = 'https://wa.me/22946305190';
+  
   return (
     <footer className="bg-dark-navy py-14 px-5">
       <div className="container mx-auto max-w-3xl text-center">
@@ -11,12 +13,15 @@ export default function Footer() {
         <p className="font-montserrat italic text-primary-foreground/50 text-sm mb-6">
           On apprend. On ajuste. On avance.
         </p>
-        <div className="flex justify-center gap-6 mb-8">
-          {['Facebook', 'Instagram', 'LinkedIn'].map(s => (
-            <a key={s} href="#" className="font-montserrat text-sm text-primary-foreground/50 hover:text-yellow transition-colors duration-300 cursor-none">
-              {s}
-            </a>
-          ))}
+        <div className="flex justify-center mb-8">
+          <a 
+            href={whatsappUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="font-montserrat text-sm text-primary-foreground/80 hover:text-yellow flex items-center gap-2 transition-colors duration-300 cursor-none"
+          >
+            <span className="text-lg">💬</span> Discutons sur WhatsApp
+          </a>
         </div>
         <div className="h-px bg-yellow/20 mb-6" />
         <p className="font-montserrat text-xs text-primary-foreground/30">

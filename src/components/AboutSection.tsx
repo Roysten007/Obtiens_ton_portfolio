@@ -6,8 +6,8 @@ export default function AboutSection() {
       <div className="container mx-auto max-w-5xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <RevealOnScroll>
-            <div className="flex justify-center">
-              <div className="relative group">
+            <div className="flex flex-col items-center justify-center">
+              <div className="relative group mb-8">
                 {/* Main circle with image */}
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border border-yellow p-2 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
                   <div className="w-full h-full rounded-full overflow-hidden bg-muted">
@@ -24,6 +24,16 @@ export default function AboutSection() {
                   Designer & Dev No-code
                 </div>
               </div>
+              
+              {/* Button added below the photo */}
+              <a 
+                href="https://roy-sten-design-portfolio.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-yellow text-navy font-outfit font-bold px-6 py-2.5 rounded-full hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow/20 transition-all duration-300 text-sm cursor-none"
+              >
+                Voir mon site →
+              </a>
             </div>
           </RevealOnScroll>
 
