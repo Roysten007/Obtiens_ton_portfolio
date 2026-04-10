@@ -13,9 +13,9 @@ export default function CTAFinalSection() {
           </p>
           <button
             onClick={() => document.querySelector('#form')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-shimmer bg-yellow text-navy font-outfit font-bold px-10 py-4 rounded-full text-lg hover:-translate-y-[3px] hover:shadow-xl hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 cursor-none"
+            className="btn-shimmer bg-yellow text-navy font-outfit font-bold px-7 py-3 md:px-10 md:py-4 rounded-full text-sm md:text-lg hover:-translate-y-[3px] hover:shadow-xl hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 cursor-none"
           >
-            Je veux mon portfolio maintenant →
+            Je veux mon portfolio →
           </button>
         </RevealOnScroll>
       </div>

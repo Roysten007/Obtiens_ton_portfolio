@@ -143,9 +143,9 @@ export default function PricingSection() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shimmer flex items-center justify-center w-full py-4 md:py-5 rounded-2xl font-outfit font-black text-sm md:text-lg tracking-wide bg-yellow text-navy hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow/40 active:scale-95 transition-all duration-300 mb-6"
+              className="btn-shimmer flex items-center justify-center w-full py-3.5 md:py-5 rounded-xl md:rounded-2xl font-outfit font-black text-sm md:text-lg tracking-wide bg-yellow text-navy hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow/40 active:scale-95 transition-all duration-300 mb-6"
             >
-              Je veux mon portfolio maintenant →
+              Je veux mon portfolio →
             </a>
 
             <p className="font-montserrat text-white/40 text-[10px] leading-relaxed italic px-4">
