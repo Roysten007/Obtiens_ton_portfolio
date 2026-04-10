@@ -34,7 +34,13 @@ export default function RealisationsSection() {
               <div className="group bg-primary-foreground/5 border border-primary-foreground/10 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-yellow/10 transition-all duration-350">
                 <div className="aspect-[4/3] bg-primary-foreground/5 flex items-center justify-center overflow-hidden">
                   {p.image ? (
-                    <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img 
+                      src={p.image} 
+                      alt={p.name} 
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
                   ) : (
                     <span className="text-primary-foreground/20 text-6xl">🖥</span>
                   )}

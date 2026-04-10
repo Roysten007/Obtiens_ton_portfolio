@@ -282,11 +282,21 @@ export default function FloatingLines({
   const targetParallaxRef = useRef(new Vector2(0, 0));
   const currentParallaxRef = useRef(new Vector2(0, 0));
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const getLineCount = (waveType: string) => {
-    if (typeof lineCount === 'number') return lineCount;
+    if (typeof lineCount === 'number') return isMobile ? Math.ceil(lineCount * 0.5) : lineCount;
     if (!enabledWaves.includes(waveType)) return 0;
     const index = enabledWaves.indexOf(waveType);
-    return lineCount[index] ?? 6;
+    let count = lineCount[index] ?? 6;
+    return isMobile ? Math.ceil(count * 0.5) : count;
   };
 
   const getLineDistance = (waveType: string) => {
