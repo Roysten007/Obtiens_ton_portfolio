@@ -19,7 +19,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden noise-overlay" style={{ backgroundColor: '#000096' }}>
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden noise-overlay" style={{ backgroundColor: 'hsl(240 80% 24%)' }}>
       {/* Grid lines */}
       <div className="absolute inset-0 z-0 opacity-[0.1]" style={{
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
@@ -64,13 +64,13 @@ export default function HeroSection() {
           <div className="flex flex-wrap justify-center items-center gap-5 mb-16 animate-fade-up" style={{ animationDelay: '0.85s', animationFillMode: 'both' }}>
             <button
               onClick={() => scrollTo('#form')}
-              className="btn-shimmer bg-yellow text-navy font-outfit font-bold px-8 py-3.5 rounded-full hover:-translate-y-[3px] hover:shadow-xl hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 cursor-none"
+              className="btn-shimmer bg-yellow text-navy font-outfit font-bold px-5 py-2.5 text-sm md:px-8 md:py-3.5 md:text-base rounded-full hover:-translate-y-[3px] hover:shadow-xl hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 cursor-none"
             >
-              Je veux mon portfolio maintenant →
+              Je veux mon portfolio →
             </button>
             <button
               onClick={() => scrollTo('#pricing')}
-              className="border-2 border-primary-foreground/40 text-primary-foreground font-outfit font-bold px-8 py-3.5 rounded-full hover:border-yellow hover:text-yellow hover:-translate-y-[3px] transition-all duration-300 cursor-none"
+              className="border-2 border-primary-foreground/40 text-primary-foreground font-outfit font-bold px-5 py-2.5 text-sm md:px-8 md:py-3.5 md:text-base rounded-full hover:border-yellow hover:text-yellow hover:-translate-y-[3px] transition-all duration-300 cursor-none"
             >
               Découvrir le tarif
             </button>

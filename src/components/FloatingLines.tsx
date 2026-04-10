@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   Clock,
   Mesh,
@@ -282,7 +282,7 @@ export default function FloatingLines({
   const targetParallaxRef = useRef(new Vector2(0, 0));
   const currentParallaxRef = useRef(new Vector2(0, 0));
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -317,6 +317,8 @@ export default function FloatingLines({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    // Skip WebGL on mobile to prevent crashes and blank pages
+    if (isMobile) return;
 
     let active = true;
 
@@ -516,6 +518,19 @@ export default function FloatingLines({
     parallax,
     parallaxStrength
   ]);
+
+  // On mobile, show a lightweight CSS-only gradient instead of WebGL
+  if (isMobile) {
+    return (
+      <div
+        className="floating-lines-container"
+        style={{
+          background: 'transparent',
+          opacity: 0.15,
+        }}
+      />
+    );
+  }
 
   return (
     <div

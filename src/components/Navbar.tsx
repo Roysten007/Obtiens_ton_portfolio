@@ -34,7 +34,7 @@ export default function Navbar() {
       <nav
         className="container mx-auto flex items-center justify-between px-5 py-4 transition-all duration-400"
         style={{
-          backgroundColor: scrolled ? 'hsl(240,100%,29.4%)' : 'transparent',
+          backgroundColor: scrolled ? 'hsl(240 80% 24%)' : 'transparent',
           backdropFilter: scrolled ? 'none' : 'blur(8px)',
         }}
       >

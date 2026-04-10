@@ -50,7 +50,7 @@ export default function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="section-padding overflow-hidden relative" style={{ backgroundColor: '#000096' }}>
+    <section id="pricing" className="section-padding overflow-hidden relative" style={{ backgroundColor: 'hsl(240 80% 18%)' }}>
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none z-0"
         style={{ background: 'radial-gradient(circle, hsla(46,96%,50%,0.05) 0%, transparent 70%)' }} />
@@ -74,13 +74,13 @@ export default function PricingSection() {
 
         {/* ── Countdown ── */}
         <RevealOnScroll delay={0.1}>
-          <div className="flex justify-center gap-4 mb-10">
+          <div className="flex justify-center gap-3 md:gap-4 mb-10">
             {Object.entries(timeLeft).map(([label, value]) => (
               <div key={label} className="flex flex-col items-center">
-                <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 min-w-[70px] backdrop-blur-sm">
-                  <span className="font-outfit font-black text-2xl md:text-3xl text-yellow">{String(value).padStart(2, '0')}</span>
+                <div className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 md:px-4 md:py-3 min-w-[58px] md:min-w-[70px] backdrop-blur-sm">
+                  <span className="font-outfit font-black text-xl md:text-3xl text-yellow">{String(value).padStart(2, '0')}</span>
                 </div>
-                <span className="text-[10px] uppercase tracking-widest text-white/40 mt-2 font-montserrat">{label}</span>
+                <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-white/40 mt-2 font-montserrat">{label}</span>
               </div>
             ))}
           </div>
@@ -99,11 +99,11 @@ export default function PricingSection() {
 
             {/* Price Area */}
             <div className="mb-10">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <span className="font-outfit font-black text-6xl md:text-7xl text-yellow leading-none tracking-tighter">
+              <div className="flex items-center justify-center gap-2 md:gap-3 mb-2">
+                <span className="font-outfit font-black text-5xl md:text-7xl text-yellow leading-none tracking-tighter">
                   59 000
                 </span>
-                <span className="font-outfit font-black text-2xl text-yellow/80 mt-2">FCFA</span>
+                <span className="font-outfit font-black text-xl md:text-2xl text-yellow/80 mt-1">FCFA</span>
               </div>
               <p className="font-montserrat text-white/40 text-sm">
                 Valeur réelle estimée : <span className="line-through text-white/20 italic">295 000 FCFA</span>
@@ -143,7 +143,7 @@ export default function PricingSection() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shimmer flex items-center justify-center w-full py-5 rounded-2xl font-outfit font-black text-base md:text-lg tracking-wide bg-yellow text-navy hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow/40 active:scale-95 transition-all duration-300 mb-6"
+              className="btn-shimmer flex items-center justify-center w-full py-4 md:py-5 rounded-2xl font-outfit font-black text-sm md:text-lg tracking-wide bg-yellow text-navy hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow/40 active:scale-95 transition-all duration-300 mb-6"
             >
               Je veux mon portfolio maintenant →
             </a>
