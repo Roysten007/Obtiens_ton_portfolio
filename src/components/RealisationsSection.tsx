@@ -28,18 +28,19 @@ export default function RealisationsSection() {
           </p>
         </RevealOnScroll>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto place-items-center">
           {projects.map((p, i) => (
-            <RevealOnScroll key={i} delay={i * 0.15}>
-              <div className="group bg-primary-foreground/5 border border-primary-foreground/10 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-yellow/10 transition-all duration-350">
-                <div className="aspect-[4/3] bg-primary-foreground/5 flex items-center justify-center overflow-hidden">
+            <RevealOnScroll key={i} delay={i * 0.15} className="w-full">
+              <div className="group bg-primary-foreground/5 border border-primary-foreground/10 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-yellow/10 transition-all duration-350 w-full text-center">
+                <div className="aspect-[4/3] bg-primary-foreground/10 flex items-center justify-center overflow-hidden">
                   {p.image ? (
-                    <img 
-                      src={p.image} 
-                      alt={p.name} 
+                    <img
+                      src={p.image}
+                      alt={p.name}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <span className="text-primary-foreground/20 text-6xl">🖥</span>
@@ -48,7 +49,7 @@ export default function RealisationsSection() {
                 <div className="p-5">
                   <h3 className="font-outfit font-bold text-primary-foreground mb-1">{p.name}</h3>
                   <p className="font-montserrat text-sm text-primary-foreground/50 mb-4">{p.role}</p>
-                  <a 
+                  <a
                     href={p.link}
                     target="_blank"
                     rel="noopener noreferrer"

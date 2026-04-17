@@ -45,15 +45,12 @@ export default function HeroSection() {
           </div>
 
           {/* H1 */}
-          <h1 className="font-outfit font-black text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-6 animate-fade-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
-            <span className="text-primary-foreground">Arrête d'être</span><br />
-            <span className="text-yellow">invisible.</span>
+          <h1 className="font-outfit font-black text-4xl md:text-5xl lg:text-7xl leading-[1.1] mb-8 animate-fade-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+            <span className="text-primary-foreground">Combien de clients high ticket</span><br />
+            <span className="text-primary-foreground">tu as </span>
+            <span className="text-yellow">déjà perdus</span><br />
+            <span className="text-primary-foreground">parce que tu n'avais rien à montrer ?</span>
           </h1>
-
-          {/* Subtitle */}
-          <p className="font-outfit font-light text-xl md:text-2xl text-primary-foreground/60 mb-6 animate-fade-up" style={{ animationDelay: '0.55s', animationFillMode: 'both' }}>
-            Ton talent existe. Ta vitrine, pas encore. <span className="text-yellow block md:inline">Obtiens toi aussi ton portfolio.</span>
-          </p>
 
           {/* Description */}
           <p className="font-montserrat text-primary-foreground/75 max-w-xl mx-auto mb-10 leading-relaxed animate-fade-up md:text-lg" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>
@@ -66,7 +63,7 @@ export default function HeroSection() {
               onClick={() => scrollTo('#form')}
               className="btn-shimmer bg-yellow text-navy font-outfit font-bold px-5 py-2.5 text-sm md:px-8 md:py-3.5 md:text-base rounded-full hover:-translate-y-[3px] hover:shadow-xl hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 cursor-none"
             >
-              Je veux mon portfolio →
+              DÉBLOQUER L'ACCÈS À MON PORTFOLIO →
             </button>
             <button
               onClick={() => scrollTo('#pricing')}

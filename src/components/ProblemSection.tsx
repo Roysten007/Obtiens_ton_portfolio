@@ -12,7 +12,7 @@ export default function ProblemSection() {
     <section id="problem" className="section-padding bg-background">
       <div className="container mx-auto max-w-4xl text-center">
         <h2 className="font-outfit font-black text-3xl md:text-4xl text-navy mb-8">
-          <WordReveal text="En 2026, être talentueux ne suffit plus." />
+          <WordReveal text="Ton talent mérite une vitrine à sa hauteur." />
         </h2>
         <RevealOnScroll delay={0.15}>
           <blockquote className="font-montserrat italic text-muted-foreground max-w-2xl mx-auto mb-14 leading-relaxed">
