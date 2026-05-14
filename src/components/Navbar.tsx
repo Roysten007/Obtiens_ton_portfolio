@@ -56,10 +56,10 @@ export default function Navbar() {
         {/* CTA */}
         <button
           onClick={() => scrollTo('#form')}
-          className="hidden md:block bg-yellow text-navy font-outfit font-bold text-sm px-5 py-2.5 rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 animate-fade-up cursor-none"
+          className="btn-shimmer hidden md:block bg-yellow text-navy font-outfit font-black text-sm px-6 py-3 rounded-full hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow/40 active:translate-y-0 transition-all duration-300 animate-fade-up cursor-none shadow-lg"
           style={{ animationDelay: '0.6s', animationFillMode: 'both' }}
         >
-          Obtenir mon portfolio
+          🚀 Obtenir mon portfolio
         </button>
 
         {/* Mobile toggle */}
@@ -78,8 +78,8 @@ export default function Navbar() {
               {l.label}
             </button>
           ))}
-          <button onClick={() => scrollTo('#form')} className="bg-yellow text-navy font-outfit font-bold px-5 py-2.5 rounded-full w-fit cursor-none">
-            Obtenir mon portfolio
+          <button onClick={() => scrollTo('#form')} className="btn-shimmer bg-yellow text-navy font-outfit font-black px-6 py-3 rounded-full w-fit cursor-none shadow-lg">
+            🚀 Obtenir mon portfolio
           </button>
         </div>
       )}

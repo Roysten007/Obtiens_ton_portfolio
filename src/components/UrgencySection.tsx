@@ -1,26 +1,29 @@
 import RevealOnScroll from './RevealOnScroll';
 import WordReveal from './WordReveal';
 import { TrendingUp, ShieldCheck, Zap } from 'lucide-react';
-
-const levers = [
-  {
-    icon: <TrendingUp className="w-8 h-8 text-yellow" />,
-    title: "Hausse de prix tous les 15 jours",
-    text: "Le prix actuel de 59 000 FCFA est une opportunité temporaire. Tous les 15 jours, l'offre augmente de 10 000 FCFA. Plus tu attends, plus l'investissement sera important."
-  },
-  {
-    icon: <Zap className="w-8 h-8 text-yellow" />,
-    title: "3 places disponibles par semaine",
-    text: "Pour garantir une livraison en 5 jours et une qualité artisanale, je n'accepte que 3 nouveaux clients par semaine. Une fois ce quota atteint, les réservations sont reportées."
-  },
-  {
-    icon: <ShieldCheck className="w-8 h-8 text-yellow" />,
-    title: "Le coût de l'invisibilité",
-    text: "Chaque prospect qui ne te trouve pas en ligne est une mission qui part chez tes concurrents. Ce n'est pas une théorie, c'est ton chiffre d'affaires qui stagne pendant que d'autres avancent."
-  }
-];
+import { useLaunchOffer } from '@/hooks/useLaunchOffer';
 
 export default function UrgencySection() {
+  const { formattedPrice } = useLaunchOffer();
+  
+  const levers = [
+    {
+      icon: <TrendingUp className="w-8 h-8 text-yellow" />,
+      title: "Hausse de prix chaque mois",
+      text: `Le prix actuel de ${formattedPrice} FCFA est une opportunité temporaire. Chaque mois, l'offre augmente de 10 000 FCFA. Plus tu attends, plus l'investissement sera important.`
+    },
+    {
+      icon: <Zap className="w-8 h-8 text-yellow" />,
+      title: "3 places disponibles par semaine",
+      text: "Pour garantir une livraison en 5 jours et une qualité artisanale, je n'accepte que 3 nouveaux clients par semaine. Une fois ce quota atteint, les réservations sont reportées."
+    },
+    {
+      icon: <ShieldCheck className="w-8 h-8 text-yellow" />,
+      title: "Le coût de l'invisibilité",
+      text: "Chaque prospect qui ne te trouve pas en ligne est une mission qui part chez tes concurrents. Ce n'est pas une théorie, c'est ton chiffre d'affaires qui stagne pendant que d'autres avancent."
+    }
+  ];
+
   return (
     <section className="section-padding bg-navy relative overflow-hidden">
       {/* Background decoration */}
@@ -55,9 +58,9 @@ export default function UrgencySection() {
           <div className="mt-16 text-center">
              <button
               onClick={() => document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-shimmer bg-yellow text-navy font-outfit font-bold px-10 py-4 rounded-full text-lg hover:-translate-y-[3px] hover:shadow-xl hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 cursor-none"
+              className="btn-shimmer bg-yellow text-navy font-outfit font-black px-12 py-5 rounded-full text-xl hover:-translate-y-[4px] hover:shadow-2xl hover:shadow-yellow/40 active:translate-y-0 transition-all duration-300 cursor-none shadow-xl"
             >
-              Je saisis l'opportunité →
+              🚀 Je saisis l'opportunité maintenant
             </button>
           </div>
         </RevealOnScroll>

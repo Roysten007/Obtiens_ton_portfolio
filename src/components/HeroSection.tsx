@@ -39,11 +39,6 @@ export default function HeroSection() {
 
       <div className="relative z-20 container mx-auto px-5 pt-32 pb-20 md:pt-44 md:pb-32">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-block bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-1.5 mb-6 animate-fade-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <span className="text-primary-foreground/90 font-montserrat text-sm">🚀 Programme Avril 2026 — Lancement</span>
-          </div>
-
           {/* H1 */}
           <h1 className="font-outfit font-black text-4xl md:text-5xl lg:text-7xl leading-[1.1] mb-8 animate-fade-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
             <span className="text-primary-foreground">Combien de clients high ticket</span><br />
@@ -61,13 +56,13 @@ export default function HeroSection() {
           <div className="flex flex-wrap justify-center items-center gap-5 mb-16 animate-fade-up" style={{ animationDelay: '0.85s', animationFillMode: 'both' }}>
             <button
               onClick={() => scrollTo('#form')}
-              className="btn-shimmer bg-yellow text-navy font-outfit font-bold px-5 py-2.5 text-sm md:px-8 md:py-3.5 md:text-base rounded-full hover:-translate-y-[3px] hover:shadow-xl hover:shadow-yellow/30 active:translate-y-0 transition-all duration-300 cursor-none"
+              className="btn-shimmer bg-yellow text-navy font-outfit font-black px-8 py-4 text-sm md:px-12 md:py-5 md:text-lg rounded-full hover:-translate-y-[4px] hover:shadow-2xl hover:shadow-yellow/40 active:translate-y-0 transition-all duration-300 cursor-none shadow-xl"
             >
-              DÉBLOQUER L'ACCÈS À MON PORTFOLIO →
+              DÉBLOQUER MON PORTFOLIO MAINTENANT →
             </button>
             <button
               onClick={() => scrollTo('#pricing')}
-              className="border-2 border-primary-foreground/40 text-primary-foreground font-outfit font-bold px-5 py-2.5 text-sm md:px-8 md:py-3.5 md:text-base rounded-full hover:border-yellow hover:text-yellow hover:-translate-y-[3px] transition-all duration-300 cursor-none"
+              className="border-2 border-primary-foreground/40 text-primary-foreground font-outfit font-bold px-6 py-3.5 text-sm md:px-10 md:py-4 md:text-base rounded-full hover:border-yellow hover:text-yellow hover:-translate-y-[3px] transition-all duration-300 cursor-none backdrop-blur-sm"
             >
               Découvrir le tarif
             </button>

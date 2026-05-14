@@ -1,5 +1,5 @@
 export default function Footer() {
-  const whatsappUrl = 'https://wa.me/22946305190';
+  const whatsappUrl = 'https://wa.me/2290143405361';
   
   return (
     <footer className="bg-dark-navy py-14 px-5">

@@ -1,43 +1,10 @@
-import { useState, useEffect } from 'react';
 import RevealOnScroll from './RevealOnScroll';
-import { Zap, Check, ShieldCheck } from 'lucide-react';
+import { Zap, Check, ShieldCheck, TrendingUp } from 'lucide-react';
+import { useLaunchOffer } from '@/hooks/useLaunchOffer';
 
 export default function PricingSection() {
-  const whatsappUrl = 'https://wa.me/22946305190';
-
-  // Countdown logic for 15 days
-  const [timeLeft, setTimeLeft] = useState({
-    days: 15,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  useEffect(() => {
-    // For a real app, this should be a fixed target date. 
-    // For this design demo, we'll just show 15 days remaining or a fixed target.
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 15);
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+  const whatsappUrl = 'https://wa.me/2290143405361';
+  const { isExpired, timeLeft, formattedPrice } = useLaunchOffer();
 
   const deliverables = [
     'Portfolio multi-pages design 100% sur-mesure',
@@ -63,52 +30,68 @@ export default function PricingSection() {
         <RevealOnScroll>
           <div className="text-center mb-12">
             <h2 className="font-outfit font-black text-3xl md:text-5xl text-white mb-5 leading-tight tracking-tight">
-              Un seul prix.{' '}
-              <span className="text-yellow">Transparent.</span>
+              {isExpired ? "Obtiens ton Portfolio Pro" : (
+                <>
+                  Obtiens ton Portfolio Pro — <br className="hidden md:block" />
+                  <span className="text-yellow">au prix le plus bas qu'il sera jamais</span>
+                </>
+              )}
             </h2>
-            <p className="font-montserrat text-white/60 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              Plus tu attends, plus tu paies. Le prix augmente de <span className="text-yellow font-bold">10 000 FCFA</span> tous les 15 jours.
+            <p className="font-montserrat text-white/70 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+              {isExpired ? (
+                "Le prix de lancement est terminé. Le prix augmente de 10 000 FCFA chaque mois — agis maintenant."
+              ) : (
+                "Ce prix augmente de 10 000 FCFA chaque mois. Tu ne le reverras plus jamais à ce tarif."
+              )}
             </p>
           </div>
         </RevealOnScroll>
 
-        {/* ── Countdown ── */}
-        <RevealOnScroll delay={0.1}>
-          <div className="flex justify-center gap-3 md:gap-4 mb-10">
-            {Object.entries(timeLeft).map(([label, value]) => (
-              <div key={label} className="flex flex-col items-center">
-                <div className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 md:px-4 md:py-3 min-w-[58px] md:min-w-[70px] backdrop-blur-sm">
-                  <span className="font-outfit font-black text-xl md:text-3xl text-yellow">{String(value).padStart(2, '0')}</span>
-                </div>
-                <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-white/40 mt-2 font-montserrat">{label}</span>
-              </div>
-            ))}
-          </div>
-        </RevealOnScroll>
-
-        {/* ── Single Unified Card (Narrower Width) ── */}
+        {/* ── Single Unified Card ── */}
         <RevealOnScroll delay={0.2}>
           <div className="relative max-w-xl mx-auto rounded-[2.5rem] border-2 border-yellow/40 overflow-hidden shadow-2xl p-8 md:p-12 text-center"
             style={{ background: 'linear-gradient(145deg, #05052e 0%, #0a0a4a 100%)' }}>
             
             {/* Top Badge */}
             <div className="inline-flex items-center gap-2 bg-yellow/10 border border-yellow/30 text-yellow font-montserrat font-bold text-[10px] md:text-xs uppercase tracking-widest px-5 py-2.5 rounded-full mb-10">
-              <Zap size={14} className="fill-current" />
-              Offre limitée · Hausse de prix imminente
+              {isExpired ? (
+                <><TrendingUp size={14} className="fill-current" /> PRIX MIS À JOUR</>
+              ) : (
+                <><Zap size={14} className="fill-current" /> ⚡ LANCEMENT OFFICIEL</>
+              )}
             </div>
 
             {/* Price Area */}
-            <div className="mb-10">
+            <div className="mb-8">
+              <p className="font-montserrat text-white/40 text-sm mb-2">
+                Prix normal : <span className="line-through text-white/30 italic">{isExpired ? '29 999 FCFA' : '59 999 FCFA'}</span>
+              </p>
               <div className="flex items-center justify-center gap-2 md:gap-3 mb-2">
-                <span className="font-outfit font-black text-5xl md:text-7xl text-yellow leading-none tracking-tighter">
-                  59 000
+                <span className="font-outfit font-black text-5xl md:text-7xl text-yellow leading-none tracking-tighter drop-shadow-lg">
+                  {formattedPrice}
                 </span>
                 <span className="font-outfit font-black text-xl md:text-2xl text-yellow/80 mt-1">FCFA</span>
               </div>
-              <p className="font-montserrat text-white/40 text-sm">
-                Valeur réelle estimée : <span className="line-through text-white/20 italic">295 000 FCFA</span>
+              <p className="font-montserrat text-yellow text-sm uppercase tracking-wider font-bold mt-4">
+                {isExpired ? "Prix en vigueur" : "Prix de lancement — expire dans :"}
               </p>
             </div>
+
+            {/* ── Countdown ── */}
+            {!isExpired && (
+              <div className="flex justify-center gap-3 md:gap-4 mb-10">
+                {Object.entries(timeLeft).map(([label, value]) => (
+                  <div key={label} className="flex flex-col items-center">
+                    <div className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 md:px-4 md:py-3 min-w-[58px] md:min-w-[70px] backdrop-blur-sm shadow-inner">
+                      <span className="font-outfit font-black text-xl md:text-3xl text-yellow">{String(value).padStart(2, '0')}</span>
+                    </div>
+                    <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-white/40 mt-2 font-montserrat">{label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {isExpired && <div className="mb-10" />}
 
             {/* Deliverables List */}
             <div className="text-left mb-10">
@@ -143,18 +126,20 @@ export default function PricingSection() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shimmer flex items-center justify-center w-full py-3.5 md:py-5 rounded-xl md:rounded-2xl font-outfit font-black text-sm md:text-lg tracking-wide bg-yellow text-navy hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow/40 active:scale-95 transition-all duration-300 mb-6"
+              className="btn-shimmer flex items-center justify-center w-full py-4 md:py-6 rounded-xl md:rounded-2xl font-outfit font-black text-base md:text-xl tracking-wide bg-yellow text-navy hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(250,195,5,0.3)] active:scale-95 transition-all duration-300 mb-4 shadow-xl"
             >
-              Je veux mon portfolio →
+              {isExpired ? "Je veux mon portfolio →" : "Je veux mon portfolio maintenant →"}
             </a>
 
-            <p className="font-montserrat text-white/40 text-[10px] leading-relaxed italic px-4">
-              "L'objectif c'est de te prouver que ça marche — pas de te faire payer le prix fort."
+            <p className="font-montserrat text-white/60 text-xs leading-relaxed max-w-sm mx-auto">
+              {isExpired 
+                ? "⚠️ Ce prix passera à 49 999 FCFA le mois prochain." 
+                : "⚠️ Après le 18 Juin, ce sera 39 999 FCFA. Chaque mois qui passe coûte 10 000 FCFA de plus."}
             </p>
           </div>
         </RevealOnScroll>
 
-        {/* ── Footer Info (Removed Mobile Money) ── */}
+        {/* ── Footer Info ── */}
         <div className="mt-12 flex flex-wrap justify-center gap-8 text-white/30 text-[10px] md:text-xs font-montserrat uppercase tracking-[0.2em]">
           <span className="flex items-center gap-2">🛡️ Garantie Satisfait ou Remboursé</span>
           <span className="flex items-center gap-2">⚡ Livraison sous 5 jours</span>

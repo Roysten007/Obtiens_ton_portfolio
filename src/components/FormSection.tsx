@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import RevealOnScroll from './RevealOnScroll';
+import { useLaunchOffer } from '@/hooks/useLaunchOffer';
 
 const metiers = [
   'Graphiste / Designer',
@@ -19,6 +20,7 @@ export default function FormSection() {
   const [formData, setFormData] = useState({
     prenom: '', nom: '', metier: '',
   });
+  const { isExpired, formattedPrice } = useLaunchOffer();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -31,12 +33,12 @@ export default function FormSection() {
     setLoading(true);
     
     // WhatsApp message
-    const text = `Bonjour ! Je souhaite obtenir mon portfolio (Offre Unique 59 000 FCFA). \n\nPrénom : ${prenom} \nNom : ${nom} \nProfession : ${metier}`;
+    const text = `Bonjour ! Je souhaite obtenir mon portfolio (${isExpired ? 'Offre en cours' : 'Offre Lancement'} ${formattedPrice} FCFA). \n\nPrénom : ${prenom} \nNom : ${nom} \nProfession : ${metier}`;
     const encodedText = encodeURIComponent(text);
     
     setTimeout(() => {
       setLoading(false);
-      window.open(`https://wa.me/22946305190?text=${encodedText}`, '_blank');
+      window.open(`https://wa.me/2290143405361?text=${encodedText}`, '_blank');
     }, 1500);
   };
 
@@ -93,18 +95,18 @@ export default function FormSection() {
             {/* Fixed Offer Display */}
             <div className="bg-navy rounded-3xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="text-center md:text-left">
-                <p className="font-outfit font-black text-lg text-yellow">Offre Unique</p>
+                <p className="font-outfit font-black text-lg text-[#C9A84C]">{isExpired ? 'Offre en cours' : 'Offre Lancement'}</p>
                 <p className="font-montserrat text-xs text-white/60">Livraison en 5 jours</p>
               </div>
-              <div className="text-3xl font-outfit font-black">
-                59 000 <span className="text-sm font-normal text-white/50">FCFA</span>
+              <div className="text-3xl font-outfit font-black text-[#C9A84C]">
+                {formattedPrice} <span className="text-sm font-normal text-[#C9A84C]/70">FCFA</span>
               </div>
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="btn-shimmer relative w-full bg-yellow text-navy font-outfit font-black py-5 rounded-2xl text-lg hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow/40 active:translate-y-0 transition-all duration-300 disabled:opacity-70 cursor-pointer overflow-hidden flex items-center justify-center gap-4 group"
+              className="btn-shimmer relative w-full bg-yellow text-navy font-outfit font-black py-6 rounded-2xl text-xl hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(255,204,0,0.4)] active:scale-95 transition-all duration-300 disabled:opacity-70 cursor-pointer overflow-hidden flex items-center justify-center gap-4 group shadow-xl"
             >
               {loading ? (
                 <div className="flex items-center gap-3">
@@ -113,7 +115,7 @@ export default function FormSection() {
                 </div>
               ) : (
                 <>
-                  <span>Réserver ma place</span>
+                  <span>🚀 Réserver ma place maintenant</span>
                   <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
                 </>
               )}

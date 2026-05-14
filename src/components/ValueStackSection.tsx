@@ -1,5 +1,6 @@
 import RevealOnScroll from './RevealOnScroll';
 import WordReveal from './WordReveal';
+import { useLaunchOffer } from '@/hooks/useLaunchOffer';
 
 const items = [
   { label: '🎨 Design portfolio sur-mesure', price: '80 000 FCFA' },
@@ -11,12 +12,15 @@ const items = [
 ];
 
 export default function ValueStackSection() {
+  const { formattedPrice, currentPrice } = useLaunchOffer();
+  const savingsMultiplier = Math.floor(295000 / currentPrice);
+
   return (
     <section className="section-padding bg-background relative overflow-hidden">
       <div className="container mx-auto max-w-4xl relative z-10 px-4">
         <div className="text-center mb-16 px-4">
           <h2 className="font-outfit font-black text-3xl md:text-5xl text-navy mb-4 tracking-tight leading-tight">
-            <WordReveal text="Ce que tu reçois vraiment pour 59 000 FCFA" />
+            <WordReveal text={`Ce que tu reçois vraiment pour ${formattedPrice} FCFA`} />
           </h2>
         </div>
 
@@ -50,7 +54,7 @@ export default function ValueStackSection() {
                   Tu paies seulement :
                 </span>
                 <span className="font-outfit font-black text-3xl md:text-4xl text-yellow">
-                  59 000 FCFA
+                  {formattedPrice} FCFA
                 </span>
              </div>
           </div>
@@ -58,7 +62,7 @@ export default function ValueStackSection() {
           <div className="mt-12 text-center">
              <RevealOnScroll delay={0.6}>
                <p className="font-montserrat text-slate-400 leading-relaxed italic text-sm md:text-base max-w-3xl mx-auto border-l-4 border-yellow pl-6 py-2">
-                "Soit 5 fois moins que la valeur réelle. Parce que l'objectif n'est pas de te faire payer le prix fort — c'est de te prouver que ça marche."
+                {`"Soit ${savingsMultiplier} fois moins que la valeur réelle. Parce que l'objectif n'est pas de te faire payer le prix fort — c'est de te prouver que ça marche."`}
                </p>
              </RevealOnScroll>
           </div>
